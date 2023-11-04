@@ -2,8 +2,9 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class EmpleadosService {
-    get empleado():string
+
+    getempleado():string
     {
-        return "Pablo Rodrguez";
+        return 'Pablo Rodrguez';
     }
 }
