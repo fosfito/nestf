@@ -16,15 +16,15 @@ export class EmpleadosController
             @Post()
             agregarEmpleado(@Body() addempleado: empleadoModel)
             {
-                return this.servicio.agregarEmpleado(addempleado)
+                return this.servicio.agregarEmpleado(addempleado);
             }
 
             /*
             BODY para el postman:
-                "id":5, 
+                {"id": 5, 
                 "apyn":"Ada Lovelace",
-                "Tel":"555-5555",
-                "salario":5000
+                "tel":"555-5555",
+                "salario":5000}
 
             */
     }

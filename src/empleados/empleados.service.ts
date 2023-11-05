@@ -29,7 +29,7 @@ export class EmpleadosService {
     **************************************************************************/
     agregarEmpleado(addempleado: empleadoModel)
     {
-        let empleadoadd = {"id": addempleado.id, "apyn": addempleado.apyn, "Tel": addempleado.tel, "Salario":addempleado.salario}
+        let empleadoadd = {'id': addempleado.id, 'apyn': addempleado.apyn, 'tel': addempleado.tel, 'Salario':addempleado.salario}
         this.empleados.push(empleadoadd);
         return "Empleado agregado correctamente";
     }
