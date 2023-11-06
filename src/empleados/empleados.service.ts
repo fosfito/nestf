@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Delete, Injectable, Param, Get } from '@nestjs/common';
 import {empleadoModel} from './empleadoModel';
 
 
@@ -20,7 +20,16 @@ export class EmpleadosService {
             listaempleados = {"id":4, "apyn":"Linus Benedict Torvalds","Tel":"444-4444",'salario':4000}
             this.empleados.push(listaempleados);
         }
-    getempleado() {
+
+    /************************************************************************* 
+    // BUSCAR UN EMPLEADO (USANDO POSTMAN PARA HACERLO  /ID)
+    **************************************************************************/
+    getempleado(id: number) {
+        return this.empleados;  
+     }
+
+
+    getempleados() {
        return this.empleados;       
     }
 
@@ -29,11 +38,20 @@ export class EmpleadosService {
     **************************************************************************/
     agregarEmpleado(addempleado: empleadoModel)
     {
-        let empleadoadd = {'id': addempleado.id, 'apyn': addempleado.apyn, 'tel': addempleado.tel, 'Salario':addempleado.salario}
+        let empleadoadd = {"id": addempleado.id, "apyn": addempleado.apyn, "tel": addempleado.tel, "Salario":addempleado.salario}
         this.empleados.push(empleadoadd);
         return "Empleado agregado correctamente";
     }
 
-    
+
+    /************************************************************************* 
+    // ELIMINAR UN EMPLEADO (USANDO POSTMAN PARA HACERLO) /id
+    **************************************************************************/
+    eliminarEmpleado(id: string) {
+        this.empleados.splice(parseInt(id),1)
+            
+        return this.empleados
+       
+      }
 
 }
