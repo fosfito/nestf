@@ -51,17 +51,30 @@ export class EmpleadosService {
     // ELIMINAR UN EMPLEADO (USANDO POSTMAN PARA HACERLO) /id
     **************************************************************************/
     eliminarEmpleado(id: string) {
-        this.empleados.splice(parseInt(id),1)      //elimina el elemento en posicion id del array 
+        if((parseInt(id)>0)&&(parseInt(id)<this.empleados.length))
+        {
+        this.empleados.splice(parseInt(id)-1,1)      //elimina el elemento en posicion id del array 
         return this.empleados
-       
+        }
+        else
+        {
+         return "ERROR! Empleado Inexistente"   
+        }
       }
 
     /************************************************************************* 
-    // UPDATE SALARIO DE UN EMPLEADO (USANDO POSTMAN PARA HACERLO  /ID)
+    // UPDATE SALARIO DE UN EMPLEADO (USANDO POSTMAN PARA HACERLO 
     **************************************************************************/
-    getempleado(id: string) {
-        return this.empleados.find(u=>u.id==id);  
-      }
+    public modificarSalario(id: number, newSalary: number) {
+        let empleado = null;
+        for(let i=0;i<this.empleados.length;i++ ){
+         if (this.empleados[i].id===id){
+           this.empleados[i].salario=newSalary;
+           empleado=this.empleados[i];
+         }
+        }
+        return empleado;
+       }
  
 
 }
