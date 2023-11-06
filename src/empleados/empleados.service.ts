@@ -25,7 +25,7 @@ export class EmpleadosService {
     // BUSCAR UN EMPLEADO (USANDO POSTMAN PARA HACERLO  /ID)
     **************************************************************************/
     getempleado(id: string) {
-       return this.empleados.find(u=>u.id===id);  
+       return this.empleados.find(u=>u.id==id);  
      }
 
 
