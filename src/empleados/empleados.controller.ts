@@ -13,6 +13,11 @@ export class EmpleadosController
                return this.servicio.getempleados();
             }
 
+            @Get(':id')
+            getempleado(@Param('id') id: string){
+               return this.servicio.getempleado(id);
+            }
+
            
 
             @Post()

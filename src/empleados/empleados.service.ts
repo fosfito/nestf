@@ -24,8 +24,8 @@ export class EmpleadosService {
     /************************************************************************* 
     // BUSCAR UN EMPLEADO (USANDO POSTMAN PARA HACERLO  /ID)
     **************************************************************************/
-    getempleado(id: number) {
-        return this.empleados;  
+    getempleado(id: string) {
+       return this.empleados.find(u=>u.id===id);  
      }
 
 
@@ -48,8 +48,7 @@ export class EmpleadosService {
     // ELIMINAR UN EMPLEADO (USANDO POSTMAN PARA HACERLO) /id
     **************************************************************************/
     eliminarEmpleado(id: string) {
-        this.empleados.splice(parseInt(id),1)
-            
+        this.empleados.splice(parseInt(id),1)      //elimina el elemento en posicion id del array 
         return this.empleados
        
       }
