@@ -39,7 +39,9 @@ export class EmpleadosController
         }
 
         @Put(':id/salario')
-        modificarSalary(@Param('id', ParseIntPipe) id: number, @Body('salario') salario: number) {
+        modificarSalario(@Param('id', ParseIntPipe) id: number, @Body('salario') salario: number) {
+            console.log(salario);
+            
            return this.servicio.modificarSalario(id, salario);
         }
     

@@ -24,7 +24,7 @@ export class EmpleadosService {
     /************************************************************************* 
     // BUSCAR UN EMPLEADO (USANDO POSTMAN PARA HACERLO  /ID)
     **************************************************************************/
-    getempleado(id: string) {
+    public getempleado(id: string) {
        return this.empleados.find(u=>u.id==id);  
      }
 
@@ -67,6 +67,8 @@ export class EmpleadosService {
     **************************************************************************/
     public modificarSalario(id: number, newSalary: number) {
         let empleado = null;
+        alert(newSalary);
+        
         for(let i=0;i<this.empleados.length;i++ ){
          if (this.empleados[i].id===id){
            this.empleados[i].salario=newSalary;
