@@ -38,12 +38,11 @@ export class EmpleadosController
         return this.servicio.eliminarEmpleado(id);
         }
 
-        @Put(':id/salario')
-        modificarSalario(@Param('id', ParseIntPipe) id: number, @Body('salario') salario: number) {
-            console.log(salario);
+        @Put(':id')
+        modificarsalario(@Body() salario: empleadoModel,@Param('id') id:string)
+        {
             
-           return this.servicio.modificarSalario(id, salario);
+            return this.servicio.modificarsalario(id, salario);
         }
-    
     }
 

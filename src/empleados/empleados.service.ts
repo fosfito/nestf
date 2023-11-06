@@ -62,21 +62,19 @@ export class EmpleadosService {
         }
       }
 
-    /************************************************************************* 
-    // UPDATE SALARIO DE UN EMPLEADO (USANDO POSTMAN PARA HACERLO 
-    **************************************************************************/
-    public modificarSalario(id: number, newSalary: number) {
-        let empleado = null;
-        alert(newSalary);
-        
-        for(let i=0;i<this.empleados.length;i++ ){
-         if (this.empleados[i].id===id){
-           this.empleados[i].salario=newSalary;
-           empleado=this.empleados[i];
-         }
+    /************************************************************************************************** 
+    // UPDATE SALARIO DE UN EMPLEADO (USANDO POSTMAN PARA HACERLO /id   y en body: {"salario":5555}
+    **************************************************************************************************/
+    modificarsalario(id: number, salario:empleadoModel)
+    {
+        for (let i = 0; i < this.empleados.length; i++) 
+        {
+            if (id==this.empleados[i].id) 
+            {
+                this.empleados[i].salario=salario
+                return this.empleados    
+            }     
         }
-        return empleado;
-       }
- 
-
+    }
+    
 }
