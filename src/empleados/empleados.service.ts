@@ -29,6 +29,9 @@ export class EmpleadosService {
      }
 
 
+      /************************************************************************* 
+      // DEVUELVO TODOS LOS EMPLEADOS
+      **************************************************************************/
     getempleados() {
        return this.empleados;       
     }
@@ -52,5 +55,13 @@ export class EmpleadosService {
         return this.empleados
        
       }
+
+    /************************************************************************* 
+    // UPDATE SALARIO DE UN EMPLEADO (USANDO POSTMAN PARA HACERLO  /ID)
+    **************************************************************************/
+    getempleado(id: string) {
+        return this.empleados.find(u=>u.id==id);  
+      }
+ 
 
 }
