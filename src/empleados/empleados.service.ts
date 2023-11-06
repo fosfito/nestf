@@ -65,13 +65,13 @@ export class EmpleadosService {
     /************************************************************************************************** 
     // UPDATE SALARIO DE UN EMPLEADO (USANDO POSTMAN PARA HACERLO /id   y en body: {"salario":5555}
     **************************************************************************************************/
-    modificarsalario(id: number, salario:empleadoModel)
+    modificarsalario(id: number, empleado:empleadoModel)
     {
         for (let i = 0; i < this.empleados.length; i++) 
         {
             if (id==this.empleados[i].id) 
             {
-                this.empleados[i].salario=salario
+                this.empleados[i].salario=empleado.salario
                 return this.empleados    
             }     
         }
