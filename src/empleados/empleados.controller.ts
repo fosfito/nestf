@@ -39,7 +39,7 @@ export class EmpleadosController
         }
 
         @Put(':id')
-        modificarsalario(@Body() salario: empleadoModel,@Param('id') id:number)
+        modificarsalario(@Body() salario: empleadoModel,@Param('id') id:string)
         {
             
             return this.servicio.modificarsalario(id, salario);

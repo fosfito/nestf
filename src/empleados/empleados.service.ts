@@ -1,5 +1,6 @@
 import { Delete, Injectable, Param, Get } from '@nestjs/common';
 import {empleadoModel} from './empleadoModel';
+import { resolveObjectURL } from 'buffer';
 
 
 @Injectable()
@@ -41,8 +42,7 @@ export class EmpleadosService {
     **************************************************************************/
     agregarEmpleado(addempleado: empleadoModel)
     {
-        let empleadoadd = {"id": addempleado.id, "apyn": addempleado.apyn, "tel": addempleado.tel, "Salario":addempleado.salario}
-        this.empleados.push(empleadoadd);
+        this.empleados.push(addempleado);
         return "Empleado agregado correctamente";
     }
 
@@ -50,28 +50,45 @@ export class EmpleadosService {
     /************************************************************************* 
     // ELIMINAR UN EMPLEADO (USANDO POSTMAN PARA HACERLO) /id
     **************************************************************************/
-    eliminarEmpleado(id: string) {
-        if((parseInt(id)>0)&&(parseInt(id)<this.empleados.length))
+    eliminarEmpleado(id: string) 
+    {
+
+        let encontrado=false;
+        for (let i = 0; i < this.empleados.length; i++) 
         {
-        this.empleados.splice(parseInt(id)-1,1)      //elimina el elemento en posicion id del array 
-        return this.empleados
+            if (this.empleados[i].id==id) 
+            {
+                this.empleados.splice(i, 1); 
+                encontrado=true;   
+            }
+            
+        }
+        //informo si el id fue eliminado o el usuario metio un id cualquiera
+        if(encontrado==true)
+        {
+           this.empleados; 
+           return "Empleado eliminado"
         }
         else
         {
-         return "ERROR! Empleado Inexistente"   
+            this.empleados; 
+            return "Empleado NO encontrado"
         }
-      }
+
+
+    }
 
     /************************************************************************************************** 
     // UPDATE SALARIO DE UN EMPLEADO (USANDO POSTMAN PARA HACERLO /id   y en body: {"salario":5555}
     **************************************************************************************************/
-    modificarsalario(id: number, empleado:empleadoModel)
+
+    modificarsalario(id: string, salario:empleadoModel)
     {
         for (let i = 0; i < this.empleados.length; i++) 
         {
             if (id==this.empleados[i].id) 
             {
-                this.empleados[i].salario=empleado.salario
+                this.empleados[i].salario=salario
                 return this.empleados    
             }     
         }
